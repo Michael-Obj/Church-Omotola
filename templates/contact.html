@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url({% static 'images/brushes/banner.svg' %})">
+    <div class="container h-100">
+        <div class="row d-flex align-items-center h-100">
+            <div class="col-md-12 text-center">
+                <h2 class="h1 font-weight-bold">Contact Us</h2>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- end of page-header -->
+
+<!-- start of contact-section -->
+<section class="section-padding contact-section has-shapes" data-aos="fade-up" data-aos-delay="100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-9 text-center mb-40">
+                <!-- <h2 class="section-title">Contact <strong>Us</strong></h2> -->
+                <p>
+                    Reach out to us effortlessly through the form below and let your spiritual journey begin. Let Us be Your Gateway to Spiritual Enlightenment.
+                </p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-xl-6 col-lg-7">
+                <form action="{% url 'contact-inquiry' %}" method="POST" class="needs-validation rounded shadow p-30" novalidate>
+                    {% csrf_token %}
+
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="fname">Your Name</label>
+                        <input class="form-control shadow-none" type="text"  name="name" placeholder="Johnson Ogala" id="fname" required>
+                        <p class="font-weight-bold invalid-feedback">Your name is required!</p>
+                    </div>
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="email">Working Mail</label>
+                        <input class="form-control shadow-none" type="email" name="email" placeholder="johnson@mail.com" id="email" required>
+                        <p class="font-weight-bold invalid-feedback">Your email is required!</p>
+                    </div>
+                   
+                    <div class="form-group mb-30">
+                        <label class="text-black-200 h5 font-weight-600 mb-2" for="message">Any Inquiry?</label>
+                        <textarea class="form-control shadow-none" name="inquiry" rows="5" placeholder="......" id="message" required></textarea>
+                        <p class="font-weight-bold invalid-feedback">Tell us something!</p>
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit">Submit Your Inquiry</button>
+                </form>
+            </div>
+            <div class="col-xl-4 col-lg-5 mt-5 mt-lg-0">
+                <div class="rounded shadow p-30 mb-30">
+                    <h3 class="font-weight-600">
+                        <i class="ti-location-pin text-primary mr-2"></i>
+                        Church Address
+                    </h3>
+
+                    <ul class="list-unstyled check-list-primary mt-30">
+                        <li class="mb-20">
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            omotolacathedralipaja@gmail.com
+                        </li>
+                        <li class="mb-20">
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            +234 806-6769-580
+                        </li>
+                        <li>
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Church Bus-Stop, Ipaja Roundabout, Ipaja, Lagos State, Nigeria.
+                        </li>
+                    </ul>
+                </div>
+                <div class="rounded shadow p-30">
+                    <h3 class="font-weight-600">
+                        <i class="ti-info-alt text-primary mr-2"></i>
+                        With your inquiry, you can:
+                    </h3>
+
+                    <ul class="list-unstyled check-list-primary mt-30">
+                        <li class="mb-20">
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Receive a guide for your salvation
+                        </li>
+                        <li class="mb-20">
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Support the growth of the parish
+                        </li>
+                        <li>
+                            <span><svg width="16" height="11" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6.125L6.91892 11L16 2" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Receive answer to your questions
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+<!-- end of contact-section -->
+
+<br><br><br>
+<div class="map" >
+    <div class="container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.2989419415867!2d3.2502689762231363!3d6.609728005123316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b9b918cd1cd1b%3A0xed97afe4b6c2ecc8!2sOmotola%20Central%20Parish!5e0!3m2!1sen!2sng!4v1699188521387!5m2!1sen!2sng" 
+        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+<br><br><br>
+
+
+{% endblock %}
+
+

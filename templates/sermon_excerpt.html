@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+
+<style>
+    #service_type a:hover, #sermoner a:hover{
+        text-decoration: none;
+    }
+
+    #sermoner{
+        color: #ff3158;
+    }
+</style>
+
+<!-- start of page-header -->
+<section class="page-header bg-light-gray has-shapes has-bg-brash bg-brash-bottom" style="background-image: url({% static 'images/brushes/banner.svg' %});">
+    <div class="container h-100">
+        <div class="row d-flex align-items-center h-100">
+            <div class="col-md-12 text-center">
+                <h2 class="h1 font-weight-bold">Sermon Excerpts</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of page-header -->
+
+<!-- start of blog-details -->
+<section class="section-padding pt-50">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-md-12 mb-30" data-aos="fade-in">
+                <img class="img-fluid rounded" src="data:image/webp;base64,{{excerpt.sermoner_picture}}" width="100%" height="auto" alt="sermoner">
+            </div>
+            <div class="col-lg-9 col-md-12 mb-60" data-aos="fade-in" data-aos-delay="50">
+                <div class="post-category position-relative mb-15" id="service_type">
+                    <a class="text-black-200 font-weight-600">{{excerpt.service_type}}</a>
+                </div>
+
+                <h2 class="font-weight-bold mb-30">{{excerpt.topic}}</h2>
+
+                <div class="post-meta font-weight-600 text-primary mb-15" id="sermoner">
+                    <a class="text-primary">Minister: <strong>{{excerpt.sermoner}}</strong></a>
+                    <span class="mx-2">|</span>
+                    <span>{{excerpt.date_created|naturalday}}</span>
+                </div>
+
+                <p class="text-justify">{{excerpt.content}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end of blog-details -->
+
+<!-- start of blog-section -->
+<section class="pb-50">
+    <div class="container">
+        <div class="row justify-content-center" data-aos="fade-up">
+            <div class="col-lg-6 col-md-9 text-center mb-40">
+                <h2 class="section-title">More <strong>Related Sermon Excerpts</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+            {% for related_excerpt in related_excerpts %}
+                <div class="col-lg-4 col-md-6 mb-40">
+                    <div class="card border-0 h-100" data-aos="fade-up" data-aos-delay="100">
+                        <a class="d-flex flex-fill align-items-center" href="{% url 'sermon-excerpts-byId' related_excerpt.id %}"><img class="card-img-top rounded" src="data:image/webp;base64,{{related_excerpt.sermoner_picture}}" width="50%" height="270px" alt="sermoner"></a>
+                        <div class="p-25 pb-0">
+                            <div class="post-category position-relative mb-15" id="service_type">
+                                <a class="text-black-200 font-weight-600" href="{% url 'sermon-excerpts-byId' related_excerpt.id %}">{{related_excerpt.service_type}}</a>
+                            </div>
+                            <a class="h4 font-weight-bold d-block mb-15" href="{% url 'sermon-excerpts-byId' related_excerpt.id %}" id="topic">{{related_excerpt.topic}}</a>
+                            <div class="post-meta font-weight-600 mb-15" id="sermoner">
+                                {{related_excerpt.date_created|naturaltime}}<span class="mx-2">|</span>{{related_excerpt.sermoner}}
+                            </div>
+                            <p class="text-justify">{{related_excerpt.content|safe|linebreaks|truncatewords:30}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- end of blog-section -->
+
+{% endblock %}
